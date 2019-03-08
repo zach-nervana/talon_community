@@ -218,13 +218,8 @@ def scroll_up_most(m):
     press("shift-k")
 
 
-ctx_global.keymap(
-    {
-        "jet search": search,
-        "(notes | notifications)": goto_notifications,
-        # '(hover)': hover,
-    }
-)
+# TODO: create a site wide context
+ctx_repo.keymap({})
 
 ctx_repo.keymap(
     {
@@ -233,8 +228,12 @@ ctx_repo.keymap(
         "[go to] (pull | pulls)[requests]": repo_goto_pull_requests,
         "[go to] projects": repo_goto_projects,
         "[go to] wiki": repo_goto_wiki,
-        "find file": repo_find_file,
+        "(find file | peach)": repo_find_file,
         "switch [(branch | tag)]": repo_switch_branch,
+        # TODO: create a site wide context
+        "jet search": search,
+        "notifications": goto_notifications,
+        # '(hover)': hover,
     }
 )
 

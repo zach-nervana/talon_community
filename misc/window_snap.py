@@ -1,7 +1,7 @@
 import time
 
 from talon import ui, tap
-from talon.voice import Context
+from talon.voice import Context, press
 
 from ..config import config
 
@@ -42,17 +42,30 @@ def move_screen(off):
     win.rect = new_rectangle
     time.sleep(0.25)
     win.rect = new_rectangle
+    time.sleep(0.25)
+    win.rect = new_rectangle
+    # time.sleep(0.25)
+    # press("alt-shift-z")
+    # time.sleep(0.25)
+    # press("alt-shift-z")
+    # time.sleep(0.25)
+    # press("alt-shift-z")
 
 
 def resize_window(x, y, w, h):
     print("Resizing: ", x, y, w, h)
     win = ui.active_window()
+    print('screens', ui.screens())
+    print('initial', win.rect)
     rect = win.screen.visible_rect.copy()
     rect.x += rect.width * x
     rect.y += rect.height * y
     rect.width *= w
     rect.height *= h
+    print('target', rect)
     win.rect = rect
+    time.sleep(1)
+    print('result', win.rect)
 
 
 def resize_to_grid(column, row, columns, rows, colspan=1, rowspan=1):
